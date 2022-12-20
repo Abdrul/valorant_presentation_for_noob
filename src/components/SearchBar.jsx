@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { DebounceInput } from "react-debounce-input";
 
-export const SearchBar = ({ setSearch, placeholder }) => {
-  const [value, setValue] = useState("");
+export const SearchBar = ({ search, setSearch, placeholder }) => {
+  // const [value, setValue] = useState("");
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
-    setValue(e.target.value);
+    // setValue(e.target.value);
   };
 
   return (
@@ -15,7 +15,7 @@ export const SearchBar = ({ setSearch, placeholder }) => {
       <WrappedInput>
         <DebounceInput
           type="text"
-          value={value}
+          value={search}
           onChange={handleSearch}
           debounceTimeout={500}
           placeholder={placeholder}

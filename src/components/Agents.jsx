@@ -25,8 +25,8 @@ export const Agents = ({ search }) => {
               <Link to={`/${user.uuid}`} state={user}>
                 <h3>{user.displayName}</h3>
                 <img src={user.fullPortraitV2} alt="" />
-                <p>{user.description}</p>
               </Link>
+              <p>{user.description}</p>
             </div>
           );
         })}
@@ -72,12 +72,19 @@ const WrappedAgent = styled.div`
     img {
       width: 400px;
       object-fit: cover;
+      &::selection {
+        display: none;
+      }
     }
 
     p {
       width: 500px;
       padding: 15px;
       color: var(--background);
+
+      &::selection {
+        background: var(--button);
+      }
     }
   }
 `;

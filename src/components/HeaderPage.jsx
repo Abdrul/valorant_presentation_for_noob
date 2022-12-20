@@ -33,7 +33,7 @@ export const HeaderPage = () => {
         </ul>
       </Header>
 
-      <SearchBar setSearch={setSearch} placeholder="Search" />
+      <SearchBar search={search} setSearch={setSearch} placeholder="Search" />
 
       {toggle ? <Maps search={search} /> : <Agents search={search} />}
     </>
