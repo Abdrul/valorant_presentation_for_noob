@@ -28,7 +28,6 @@ export const SearchBar = ({ search, setSearch, placeholder }) => {
 const WrappedInput = styled.div`
   width: 100%;
   padding: 25px 0;
-  background: var(--paragraph);
 
   input {
     width: 300px;

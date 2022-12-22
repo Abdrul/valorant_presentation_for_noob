@@ -17,7 +17,7 @@ export const Agents = ({ search }) => {
   });
 
   return (
-    <Section>
+    <Div>
       <WrappedAgent>
         {agentsFilteredByNameAndRole.map((user) => {
           return (
@@ -31,13 +31,14 @@ export const Agents = ({ search }) => {
           );
         })}
       </WrappedAgent>
-    </Section>
+    </Div>
   );
 };
 
-const Section = styled.section`
-  background: var(--paragraph);
+const Div = styled.div`
+  /* background: var(--paragraph); */
   padding: 25px 0;
+  /* height: 100%; */
 `;
 
 const WrappedAgent = styled.div`

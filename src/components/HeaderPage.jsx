@@ -4,7 +4,6 @@ import { SearchBar } from "./SearchBar";
 import { Agents } from "./Agents";
 import { Maps } from "./Maps";
 import { useStickyState } from "./hooks/useStickyState";
-import { Link } from "react-router-dom";
 
 const NAME_KEY = "toggle";
 
@@ -32,13 +31,19 @@ export const HeaderPage = () => {
           <li onClick={handleMaps}>Maps</li>
         </ul>
       </Header>
+      <Section>
+        <SearchBar search={search} setSearch={setSearch} placeholder="Search" />
 
-      <SearchBar search={search} setSearch={setSearch} placeholder="Search" />
-
-      {toggle ? <Maps search={search} /> : <Agents search={search} />}
+        {toggle ? <Maps search={search} /> : <Agents search={search} />}
+      </Section>
     </>
   );
 };
+
+const Section = styled.section`
+  background: var(--paragraph);
+  min-height: 789px;
+`;
 
 const Header = styled.header`
   background: var(--background);

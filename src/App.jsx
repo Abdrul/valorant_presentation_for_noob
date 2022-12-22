@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
 }
 html, body {
-  height: 100vh;
+  height: 100%;
 }
 body {
   line-height: 1.5;
