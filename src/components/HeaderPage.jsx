@@ -3,22 +3,22 @@ import styled from "styled-components";
 import { SearchBar } from "./SearchBar";
 import { Agents } from "./Agents";
 import { Maps } from "./Maps";
+import { Weapon } from "./Weapon";
 import { useStickyState } from "./hooks/useStickyState";
 
-const NAME_KEY = "toggle";
+const NAME_KEY = "categorie";
 
 export const HeaderPage = () => {
   const [search, setSearch] = useState("");
-  const [toggle, setToggle] = useStickyState(NAME_KEY, false);
+  const [displayCategories, setDisplayCategories] = useStickyState(
+    NAME_KEY,
+    "Agents"
+  );
 
-  const handleAgents = () => {
-    setToggle(false);
-    setSearch("");
-  };
+  const categories = ["Agents", "Maps", "Weapon"];
 
-  const handleMaps = () => {
-    setToggle(true);
-    setSearch("");
+  const handleA = (categorie) => {
+    setDisplayCategories(categorie);
   };
 
   return (
@@ -26,15 +26,18 @@ export const HeaderPage = () => {
       <Header>
         <h1>Valorant</h1>
         <ul>
-          <li onClick={handleAgents}>Agents</li>
-          <div></div>
-          <li onClick={handleMaps}>Maps</li>
+          {categories.map((categorie, index) => (
+            <li onClick={() => handleA(categorie)} key={index}>
+              {categorie}
+            </li>
+          ))}
         </ul>
       </Header>
       <Section>
         <SearchBar search={search} setSearch={setSearch} placeholder="Search" />
-
-        {toggle ? <Maps search={search} /> : <Agents search={search} />}
+        {displayCategories === "Agents" && <Agents search={search} />}
+        {displayCategories === "Maps" && <Maps search={search} />}
+        {displayCategories === "Weapon" && <Weapon />}
       </Section>
     </>
   );
@@ -60,17 +63,21 @@ const Header = styled.header`
 
   ul {
     display: flex;
-    gap: 50px;
     position: relative;
     font-size: 18px;
     padding-inline-start: 0;
-    padding: 5px 30px;
     border: 1px solid var(--headline);
     border-bottom: none;
 
     li {
       list-style-type: none;
       cursor: pointer;
+      border-left: 1px solid var(--headline);
+      padding: 16px;
+
+      &:nth-child(1) {
+        border-left: none;
+      }
     }
 
     div {

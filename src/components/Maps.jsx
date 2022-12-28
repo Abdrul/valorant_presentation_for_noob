@@ -9,8 +9,6 @@ export const Maps = ({ search }) => {
   if (mapsQuery?.isLoading) return <p>Loading</p>;
   if (mapsQuery?.isError) return <p> {error.message} </p>;
 
-  console.log(mapsQuery.data.data);
-
   const filterMap = mapsQuery.data.data.filter(
     (map) => map.displayName !== "Split" && map.displayName !== "The Range"
   );

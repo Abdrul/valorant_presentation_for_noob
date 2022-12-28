@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { DebounceInput } from "react-debounce-input";
 
 export const SearchBar = ({ search, setSearch, placeholder }) => {
-  // const [value, setValue] = useState("");
-
   const handleSearch = (e) => {
     setSearch(e.target.value);
-    // setValue(e.target.value);
   };
 
   return (

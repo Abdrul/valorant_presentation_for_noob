@@ -13,13 +13,13 @@ const getInitialValue = (key, defaultValue) => {
 };
 
 export const useStickyState = (key, defaultValue) => {
-  const [toggle, setToggle] = useState(() =>
+  const [displayCategories, setDisplayCategories] = useState(() =>
     getInitialValue(key, defaultValue)
   );
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(toggle));
-  }, [key, toggle]);
+    localStorage.setItem(key, JSON.stringify(displayCategories));
+  }, [key, displayCategories]);
 
-  return [toggle, setToggle];
+  return [displayCategories, setDisplayCategories];
 };

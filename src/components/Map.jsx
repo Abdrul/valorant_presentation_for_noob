@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export const Map = () => {
@@ -8,8 +8,8 @@ export const Map = () => {
 
   const pointStyle = {
     position: "absolute",
-    left: 150,
-    top: 980,
+    left: 753,
+    top: 522,
     width: 10,
     height: 10,
     backgroundColor: "red",
@@ -21,7 +21,7 @@ export const Map = () => {
       <WrappedMap>
         <h1>{item.displayName}</h1>
         <Img src={item.displayIcon} alt="map" />
-        <div style={pointStyle}></div>
+        <div style={pointStyle} onClick={() => console.log("hello")}></div>
       </WrappedMap>
       <h2>Call Position :</h2>
       <WrappedRegionName>

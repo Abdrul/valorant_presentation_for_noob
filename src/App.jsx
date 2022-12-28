@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 import { HeaderPage } from "./components/HeaderPage";
-import { Maps } from "./components/Maps";
 import { Map } from "./components/Map";
 import Agent from "./components/Agent";
 import { Route, Routes } from "react-router-dom";
@@ -12,7 +11,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HeaderPage />} />
         <Route path="/:id" element={<Agent />} />
-        {/* <Route path="/maps" element={<Maps />} /> */}
         <Route path="/maps/:id" element={<Map />} />
       </Routes>
     </div>
