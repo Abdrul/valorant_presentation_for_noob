@@ -4,7 +4,7 @@ import useQuery from "./hooks/useQuery";
 import { Link } from "react-router-dom";
 
 export const Agents = ({ search }) => {
-  const [agentsQuery, _] = useQuery();
+  const { agentsQuery } = useQuery();
 
   if (agentsQuery.isLoading) return <p>Loading</p>;
   if (agentsQuery.isError) return <p> {error.message} </p>;

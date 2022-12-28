@@ -20,5 +20,5 @@ export default function usePosts() {
     ],
   });
 
-  return [agentsQuery, mapsQuery];
+  return { agentsQuery, mapsQuery };
 }

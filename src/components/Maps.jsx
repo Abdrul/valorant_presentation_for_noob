@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Maps = ({ search }) => {
-  const [_, mapsQuery] = useQuery();
+  const { mapsQuery } = useQuery();
 
   if (mapsQuery?.isLoading) return <p>Loading</p>;
   if (mapsQuery?.isError) return <p> {error.message} </p>;
