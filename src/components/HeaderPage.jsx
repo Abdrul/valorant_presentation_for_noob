@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { SearchBar } from "./SearchBar";
 import { Agents } from "./Agents";
 import { Maps } from "./Maps";
-import { Weapon } from "./Weapon";
+import { Weapons } from "./Weapons";
 import { useStickyState } from "./hooks/useStickyState";
 
 const NAME_KEY = "categorie";
@@ -17,8 +17,9 @@ export const HeaderPage = () => {
 
   const categories = ["Agents", "Maps", "Weapon"];
 
-  const handleA = (categorie) => {
+  const handleChangeCategories = (categorie) => {
     setDisplayCategories(categorie);
+    setSearch("");
   };
 
   return (
@@ -27,7 +28,7 @@ export const HeaderPage = () => {
         <h1>Valorant</h1>
         <ul>
           {categories.map((categorie, index) => (
-            <li onClick={() => handleA(categorie)} key={index}>
+            <li onClick={() => handleChangeCategories(categorie)} key={index}>
               {categorie}
             </li>
           ))}
@@ -37,7 +38,7 @@ export const HeaderPage = () => {
         <SearchBar search={search} setSearch={setSearch} placeholder="Search" />
         {displayCategories === "Agents" && <Agents search={search} />}
         {displayCategories === "Maps" && <Maps search={search} />}
-        {displayCategories === "Weapon" && <Weapon />}
+        {displayCategories === "Weapon" && <Weapons search={search} />}
       </Section>
     </>
   );

@@ -12,13 +12,19 @@ const getMaps = async () => {
   return response.json();
 };
 
+const getWeapons = async () => {
+  const response = await fetch("https://valorant-api.com/v1/weapons");
+  return response.json();
+};
+
 export default function usePosts() {
-  const [agentsQuery, mapsQuery] = useQueries({
+  const [agentsQuery, mapsQuery, weaponsQuery] = useQueries({
     queries: [
       { queryKey: ["agents"], queryFn: getAgents },
       { queryKey: ["maps"], queryFn: getMaps },
+      { queryKey: ["weapon"], queryFn: getWeapons },
     ],
   });
 
-  return { agentsQuery, mapsQuery };
+  return { agentsQuery, mapsQuery, weaponsQuery };
 }

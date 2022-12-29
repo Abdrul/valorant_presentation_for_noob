@@ -36,9 +36,7 @@ export const Agents = ({ search }) => {
 };
 
 const Div = styled.div`
-  /* background: var(--paragraph); */
   padding: 25px 0;
-  /* height: 100%; */
 `;
 
 const WrappedAgent = styled.div`
