@@ -9,7 +9,9 @@ export const Agents = ({ search }) => {
   if (agentsQuery.isLoading) return <p>Loading</p>;
   if (agentsQuery.isError) return <p> {error.message} </p>;
 
-  const agentsFilteredByNameAndRole = agentsQuery.data.data.filter((item) => {
+  const agentsArray = agentsQuery.data.data;
+
+  const agentsFilteredByNameAndRole = agentsArray.filter((item) => {
     return (
       item.displayName.toLowerCase().includes(search.toLowerCase()) ||
       item.role.displayName.toLowerCase().includes(search.toLowerCase())
