@@ -16,9 +16,30 @@ export const Weapons = ({ search }) => {
   // });
 
   const weaponsWithoutKnife = weaponsArray.slice(0, weaponsArray.length - 1);
+  console.log(weaponsWithoutKnife);
+
+  const filterWeaponsBySidearms = weaponsWithoutKnife.filter(
+    (weapon) => weapon.shopData.categoryText === "Sidearms"
+  );
+
+  const filterWeaponsByHeavy = weaponsWithoutKnife.filter(
+    (weapon) => weapon.shopData.categoryText === "Heavy Weapons"
+  );
+  const filterWeaponsByRifles = weaponsWithoutKnife.filter(
+    (weapon) => weapon.shopData.categoryText === "Assault Rifles"
+  );
+  const filterWeaponsByShotguns = weaponsWithoutKnife.filter(
+    (weapon) => weapon.shopData.categoryText === "Shotguns"
+  );
+  const filterWeaponsBySniper = weaponsWithoutKnife.filter(
+    (weapon) => weapon.shopData.categoryText === "Sniper Rifles"
+  );
+  const filterWeaponsBySmgs = weaponsWithoutKnife.filter(
+    (weapon) => weapon.shopData.categoryText === "SMGs"
+  );
 
   return (
-    <Div>
+    <Section>
       {/* <WrappedAgent>
         {WeaponsFilteredByName.map((weapon) => {
           return (
@@ -31,70 +52,84 @@ export const Weapons = ({ search }) => {
           );
         })}
       </WrappedAgent> */}
-
-      {/* <div>
-              {weapon.shopData.category === "Pistols" && (
-                <>
-                  <img src={weapon.shopData.newImage} alt="" />
-                  <p>{weapon.shopData.cost}</p>
-                  <p>{weapon.shopData.category}</p>
-                </>
-              )}
+      <div>
+        <h3>Sidearm</h3>
+        {filterWeaponsBySidearms.map((weapon) => {
+          return (
+            <div key={weapon.uuid}>
+              <img src={weapon.shopData.newImage} alt="" />
+              <p>{weapon.shopData.cost}</p>
+              <p>{weapon.displayName}</p>
             </div>
-            <div>
-              {weapon.shopData.category === "Heavy Weapons" && (
-                <>
-                  <img src={weapon.shopData.newImage} alt="" />
-                  <p>{weapon.shopData.cost}</p>
-                  <p>{weapon.shopData.category}</p>
-                </>
-              )}
-            </div> */}
-
-      {weaponsWithoutKnife.map((weapon) => {
-        return (
-          <div key={weapon.uuid} className="test">
-            <img src={weapon.shopData.newImage} alt="" />
-            <p>{weapon.shopData.cost}</p>
-            <p>{weapon.shopData.category}</p>
-          </div>
-        );
-      })}
-    </Div>
+          );
+        })}
+      </div>
+      <div>
+        <h3>Heavy</h3>
+        {filterWeaponsByHeavy.map((weapon) => {
+          return (
+            <div key={weapon.uuid}>
+              <img src={weapon.shopData.newImage} alt="" />
+              <p>{weapon.shopData.cost}</p>
+              <p>{weapon.displayName}</p>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        <h3>Rifles</h3>
+        {filterWeaponsByRifles.map((weapon) => {
+          return (
+            <div key={weapon.uuid}>
+              <img src={weapon.shopData.newImage} alt="" />
+              <p>{weapon.shopData.cost}</p>
+              <p>{weapon.displayName}</p>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        <h3>Sniper</h3>
+        {filterWeaponsBySniper.map((weapon) => {
+          return (
+            <div key={weapon.uuid}>
+              <img src={weapon.shopData.newImage} alt="" />
+              <p>{weapon.shopData.cost}</p>
+              <p>{weapon.displayName}</p>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        <h3>Shotguns</h3>
+        {filterWeaponsByShotguns.map((weapon) => {
+          return (
+            <div key={weapon.uuid}>
+              <img src={weapon.shopData.newImage} alt="" />
+              <p>{weapon.shopData.cost}</p>
+              <p>{weapon.displayName}</p>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        <h3>Smgs</h3>
+        {filterWeaponsBySmgs.map((weapon) => {
+          return (
+            <div key={weapon.uuid}>
+              <img src={weapon.shopData.newImage} alt="" />
+              <p>{weapon.shopData.cost}</p>
+              <p>{weapon.displayName}</p>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
   );
 };
 
-const Div = styled.div`
+const Section = styled.section`
   padding: 25px 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-gap: 16px;
-
-  .test {
-    background: lightcoral;
-
-    &:nth-child(3) {
-      background: #000;
-      grid-column: 3;
-      grid-row: 1/5;
-    }
-    &:nth-child(7) {
-      background: #000;
-      grid-column: 3;
-      grid-row: 2/5;
-    }
-    &:nth-child(11) {
-      background: #000;
-      grid-column: 3;
-      grid-row: 3/5;
-    }
-    &:nth-child(15) {
-      background: #000;
-      grid-column: 3;
-      grid-row: 4/6;
-    }
-  }
 `;
 
 // const WrappedAgent = styled.div`
