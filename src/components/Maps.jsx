@@ -11,7 +11,7 @@ export const Maps = ({ search }) => {
 
   const mapsArray = mapsQuery.data.data;
 
-  const filterMap = mapsArr.filter(
+  const filterMap = mapsArray.filter(
     (map) => map.displayName !== "Split" && map.displayName !== "The Range"
   );
 

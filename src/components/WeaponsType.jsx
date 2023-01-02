@@ -1,11 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 
 export const WeaponBySidearms = ({ type, weapon }) => {
   const filterWeaponsBySidearms = weapon.filter(
     (weapon) => weapon.shopData.categoryText === "Sidearms"
   );
   return (
-    <div>
+    <WrappedWeapon>
       <h3>{type}</h3>
       {filterWeaponsBySidearms.map((weapon) => {
         return (
@@ -16,7 +17,7 @@ export const WeaponBySidearms = ({ type, weapon }) => {
           </div>
         );
       })}
-    </div>
+    </WrappedWeapon>
   );
 };
 
@@ -25,7 +26,7 @@ export const WeaponBySniper = ({ type, weapon }) => {
     (weapon) => weapon.shopData.categoryText === "Sniper Rifles"
   );
   return (
-    <div>
+    <WrappedWeapon>
       <h3>{type}</h3>
       {filterWeaponsBySniper.map((weapon) => {
         return (
@@ -36,7 +37,7 @@ export const WeaponBySniper = ({ type, weapon }) => {
           </div>
         );
       })}
-    </div>
+    </WrappedWeapon>
   );
 };
 
@@ -45,7 +46,7 @@ export const WeaponByHeavy = ({ type, weapon }) => {
     (weapon) => weapon.shopData.categoryText === "Heavy Weapons"
   );
   return (
-    <div>
+    <WrappedWeapon>
       <h3>{type}</h3>
       {filterWeaponsByHeavy.map((weapon) => {
         return (
@@ -56,16 +57,16 @@ export const WeaponByHeavy = ({ type, weapon }) => {
           </div>
         );
       })}
-    </div>
+    </WrappedWeapon>
   );
 };
 
 export const WeaponByRifles = ({ type, weapon }) => {
   const filterWeaponsBySniper = weapon.filter(
-    (weapon) => weapon.shopData.categoryText === "Sniper Rifles"
+    (weapon) => weapon.shopData.categoryText === "Assault Rifles"
   );
   return (
-    <div>
+    <WrappedWeapon>
       <h3>{type}</h3>
       {filterWeaponsBySniper.map((weapon) => {
         return (
@@ -76,7 +77,7 @@ export const WeaponByRifles = ({ type, weapon }) => {
           </div>
         );
       })}
-    </div>
+    </WrappedWeapon>
   );
 };
 
@@ -85,7 +86,7 @@ export const WeaponBySmgs = ({ type, weapon }) => {
     (weapon) => weapon.shopData.categoryText === "SMGs"
   );
   return (
-    <div>
+    <WrappedWeapon>
       <h3>{type}</h3>
       {filterWeaponsBySmgs.map((weapon) => {
         return (
@@ -96,7 +97,7 @@ export const WeaponBySmgs = ({ type, weapon }) => {
           </div>
         );
       })}
-    </div>
+    </WrappedWeapon>
   );
 };
 
@@ -106,7 +107,7 @@ export const WeaponByShotguns = ({ type, weapon }) => {
   );
 
   return (
-    <div>
+    <WrappedWeapon>
       <h3>{type}</h3>
       {filterWeaponsByShotguns.map((weapon) => {
         return (
@@ -117,6 +118,10 @@ export const WeaponByShotguns = ({ type, weapon }) => {
           </div>
         );
       })}
-    </div>
+    </WrappedWeapon>
   );
 };
+
+const WrappedWeapon = styled.div`
+  border: 1px solid black;
+`;
