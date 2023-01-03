@@ -35,9 +35,28 @@ export const HeaderPage = () => {
         </ul>
       </Header>
       <Section>
-        <SearchBar search={search} setSearch={setSearch} placeholder="Search" />
-        {displayCategories === "Agents" && <Agents search={search} />}
-        {displayCategories === "Maps" && <Maps search={search} />}
+        {displayCategories === "Agents" && (
+          <>
+            <SearchBar
+              search={search}
+              setSearch={setSearch}
+              placeholder="Search"
+            />
+
+            <Agents search={search} />
+          </>
+        )}
+        {displayCategories === "Maps" && (
+          <>
+            <SearchBar
+              search={search}
+              setSearch={setSearch}
+              placeholder="Search"
+            />
+
+            <Maps search={search} />
+          </>
+        )}
         {displayCategories === "Weapon" && <Weapons search={search} />}
       </Section>
     </>
