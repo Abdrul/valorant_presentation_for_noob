@@ -19,33 +19,23 @@ export const Weapons = ({ search }) => {
   const weaponsArray = weaponsQuery.data.data;
 
   const weaponsWithoutKnife = weaponsArray.slice(0, weaponsArray.length - 1);
-  console.log(weaponsWithoutKnife);
 
   return (
     <Section>
-      <Container>
-        {/* <WrappedInventorySidearms> */}
-        {/* </WrappedInventorySidearms> */}
-
-        <WrappedInventoryRest>
-          <WeaponBySidearms type={"Sidearms"} weapon={weaponsWithoutKnife} />
-
-          <WeaponBySmgs type={"Smgs"} weapon={weaponsWithoutKnife} />
-          <WeaponByShotguns type={"Shotguns"} weapon={weaponsWithoutKnife} />
-          <WeaponByRifles type={"Rifles"} weapon={weaponsWithoutKnife} />
-          <WeaponBySniper type={"Sniper"} weapon={weaponsWithoutKnife} />
-          <WeaponByHeavy type={"Heavy"} weapon={weaponsWithoutKnife} />
-        </WrappedInventoryRest>
-      </Container>
+      <WrappedInventoryRest>
+        <WeaponBySidearms type={"Sidearms"} weapon={weaponsWithoutKnife} />
+        <WeaponBySmgs type={"Smgs"} weapon={weaponsWithoutKnife} />
+        <WeaponByShotguns type={"Shotguns"} weapon={weaponsWithoutKnife} />
+        <WeaponByRifles type={"Rifles"} weapon={weaponsWithoutKnife} />
+        <WeaponBySniper type={"Sniper"} weapon={weaponsWithoutKnife} />
+        <WeaponByHeavy type={"Heavy"} weapon={weaponsWithoutKnife} />
+      </WrappedInventoryRest>
     </Section>
   );
 };
 
 const Section = styled.section`
   padding: 25px 0;
-`;
-
-const Container = styled.div`
   display: flex;
 `;
 
