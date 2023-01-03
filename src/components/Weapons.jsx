@@ -24,11 +24,12 @@ export const Weapons = ({ search }) => {
   return (
     <Section>
       <Container>
-        <WrappedInventorySidearms>
-          <WeaponBySidearms type={"Sidearms"} weapon={weaponsWithoutKnife} />
-        </WrappedInventorySidearms>
+        {/* <WrappedInventorySidearms> */}
+        {/* </WrappedInventorySidearms> */}
 
         <WrappedInventoryRest>
+          <WeaponBySidearms type={"Sidearms"} weapon={weaponsWithoutKnife} />
+
           <WeaponBySmgs type={"Smgs"} weapon={weaponsWithoutKnife} />
           <WeaponByShotguns type={"Shotguns"} weapon={weaponsWithoutKnife} />
           <WeaponByRifles type={"Rifles"} weapon={weaponsWithoutKnife} />
@@ -48,32 +49,30 @@ const Container = styled.div`
   display: flex;
 `;
 
-const WrappedInventorySidearms = styled.div`
-  /* display: flex; */
-`;
-
 const WrappedInventoryRest = styled.div`
-  /* background: #000; */
   display: grid;
   grid-template-areas:
-    "SMGS RIFLES SNIPER"
-    "SHOTGUNS RIFLES HEAVY";
-  /* height: 100%; */
+    "SIDE SMGS RIFLES SNIPER"
+    "SIDE SHOTGUNS RIFLES HEAVY";
+  grid-gap: 15px;
 
   div {
     &:nth-child(1) {
-      grid-area: SMGS;
+      grid-area: SIDE;
     }
     &:nth-child(2) {
-      grid-area: SHOTGUNS;
+      grid-area: SMGS;
     }
     &:nth-child(3) {
-      grid-area: RIFLES;
+      grid-area: SHOTGUNS;
     }
     &:nth-child(4) {
-      grid-area: SNIPER;
+      grid-area: RIFLES;
     }
     &:nth-child(5) {
+      grid-area: SNIPER;
+    }
+    &:nth-child(6) {
       grid-area: HEAVY;
     }
   }
