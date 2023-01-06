@@ -3,16 +3,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const WeaponBySidearms = ({ type, weapon }) => {
-  const filterWeaponsBySidearms = weapon.filter(
-    (weapon) => weapon.shopData.categoryText === "Sidearms"
-  );
-  const sortWeaponsByPrice = filterWeaponsBySidearms.sort(
-    (a, b) => a.shopData.cost - b.shopData.cost
-  );
+  const [categoryWeapons] = weapon(type);
+
   return (
     <DivSidearm>
       <h3>{type}</h3>
-      {sortWeaponsByPrice.map((weapon) => {
+      {categoryWeapons.map((weapon) => {
         return (
           <div key={weapon.uuid}>
             <Link to={`/weapons/${weapon.uuid}`} state={weapon}>
@@ -28,17 +24,12 @@ export const WeaponBySidearms = ({ type, weapon }) => {
 };
 
 export const WeaponBySniper = ({ type, weapon }) => {
-  const filterWeaponsBySniper = weapon.filter(
-    (weapon) => weapon.shopData.categoryText === "Sniper Rifles"
-  );
+  const [categoryWeapons] = weapon(type);
 
-  const sortWeaponsByPrice = filterWeaponsBySniper.sort(
-    (a, b) => a.shopData.cost - b.shopData.cost
-  );
   return (
-    <Test>
+    <WrappedWeapon>
       <h3>{type}</h3>
-      {sortWeaponsByPrice.map((weapon) => {
+      {categoryWeapons.map((weapon) => {
         return (
           <div key={weapon.uuid}>
             <Link to={`/weapons/${weapon.uuid}`} state={weapon}>
@@ -49,22 +40,17 @@ export const WeaponBySniper = ({ type, weapon }) => {
           </div>
         );
       })}
-    </Test>
+    </WrappedWeapon>
   );
 };
 
 export const WeaponByHeavy = ({ type, weapon }) => {
-  const filterWeaponsByHeavy = weapon.filter(
-    (weapon) => weapon.shopData.categoryText === "Heavy Weapons"
-  );
+  const [categoryWeapons] = weapon(type);
 
-  const sortWeaponsByPrice = filterWeaponsByHeavy.sort(
-    (a, b) => a.shopData.cost - b.shopData.cost
-  );
   return (
-    <Test>
+    <WrappedWeapon>
       <h3>{type}</h3>
-      {sortWeaponsByPrice.map((weapon) => {
+      {categoryWeapons.map((weapon) => {
         return (
           <div key={weapon.uuid}>
             <Link to={`/weapons/${weapon.uuid}`} state={weapon}>
@@ -75,22 +61,17 @@ export const WeaponByHeavy = ({ type, weapon }) => {
           </div>
         );
       })}
-    </Test>
+    </WrappedWeapon>
   );
 };
 
 export const WeaponByRifles = ({ type, weapon }) => {
-  const filterWeaponsByRifles = weapon.filter(
-    (weapon) => weapon.shopData.categoryText === "Assault Rifles"
-  );
+  const [categoryWeapons] = weapon(type);
 
-  const sortWeaponsByPrice = filterWeaponsByRifles.sort(
-    (a, b) => a.shopData.cost - b.shopData.cost
-  );
   return (
-    <Test>
+    <WrappedWeapon>
       <h3>{type}</h3>
-      {sortWeaponsByPrice.map((weapon) => {
+      {categoryWeapons.map((weapon) => {
         return (
           <div key={weapon.uuid}>
             <Link to={`/weapons/${weapon.uuid}`} state={weapon}>
@@ -101,22 +82,17 @@ export const WeaponByRifles = ({ type, weapon }) => {
           </div>
         );
       })}
-    </Test>
+    </WrappedWeapon>
   );
 };
 
 export const WeaponBySmgs = ({ type, weapon }) => {
-  const filterWeaponsBySmgs = weapon.filter(
-    (weapon) => weapon.shopData.categoryText === "SMGs"
-  );
+  const [categoryWeapons] = weapon(type);
 
-  const sortWeaponsByPrice = filterWeaponsBySmgs.sort(
-    (a, b) => a.shopData.cost - b.shopData.cost
-  );
   return (
-    <Test>
+    <WrappedWeapon>
       <h3>{type}</h3>
-      {sortWeaponsByPrice.map((weapon) => {
+      {categoryWeapons.map((weapon) => {
         return (
           <div key={weapon.uuid}>
             <Link to={`/weapons/${weapon.uuid}`} state={weapon}>
@@ -127,22 +103,17 @@ export const WeaponBySmgs = ({ type, weapon }) => {
           </div>
         );
       })}
-    </Test>
+    </WrappedWeapon>
   );
 };
 
 export const WeaponByShotguns = ({ type, weapon }) => {
-  const filterWeaponsByShotguns = weapon.filter(
-    (weapon) => weapon.shopData.categoryText === "Shotguns"
-  );
-  const sortWeaponsByPrice = filterWeaponsByShotguns.sort(
-    (a, b) => a.shopData.cost - b.shopData.cost
-  );
+  const [categoryWeapons] = weapon(type);
 
   return (
-    <Test>
+    <WrappedWeapon>
       <h3>{type}</h3>
-      {sortWeaponsByPrice.map((weapon) => {
+      {categoryWeapons.map((weapon) => {
         return (
           <div key={weapon.uuid}>
             <Link to={`/weapons/${weapon.uuid}`} state={weapon}>
@@ -153,11 +124,11 @@ export const WeaponByShotguns = ({ type, weapon }) => {
           </div>
         );
       })}
-    </Test>
+    </WrappedWeapon>
   );
 };
 
-const Test = styled.div`
+const WrappedWeapon = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -166,6 +137,7 @@ const Test = styled.div`
     text-align: center;
     background: var(--background);
     color: var(--headline);
+    text-transform: uppercase;
   }
 
   div {
@@ -199,6 +171,7 @@ const DivSidearm = styled.div`
     text-align: center;
     background: var(--background);
     color: var(--headline);
+    text-transform: uppercase;
   }
 
   div {

@@ -13,7 +13,7 @@ export const Weapon = () => {
       <img src={item.displayIcon} alt="" />
       {item.skins.map((skin) => {
         return (
-          <div>
+          <div key={skin.uuid}>
             <p>{skin.displayName}</p>
             <img src={skin.displayIcon} alt="" />
           </div>

@@ -20,15 +20,42 @@ export const Weapons = ({ search }) => {
 
   const weaponsWithoutKnife = weaponsArray.slice(0, weaponsArray.length - 1);
 
+  const filteredWeaponsByTypeAndPrice = (type) => {
+    const categoryWeapons = weaponsWithoutKnife.filter(
+      (weapon) => weapon.shopData.categoryText === type
+    );
+
+    const sortWeaponsByPrice = categoryWeapons.sort(
+      (a, b) => a.shopData.cost - b.shopData.cost
+    );
+
+    return [sortWeaponsByPrice];
+  };
+
   return (
     <Section>
       <WrappedInventoryRest>
-        <WeaponBySidearms type={"Sidearms"} weapon={weaponsWithoutKnife} />
-        <WeaponBySmgs type={"Smgs"} weapon={weaponsWithoutKnife} />
-        <WeaponByShotguns type={"Shotguns"} weapon={weaponsWithoutKnife} />
-        <WeaponByRifles type={"Rifles"} weapon={weaponsWithoutKnife} />
-        <WeaponBySniper type={"Sniper"} weapon={weaponsWithoutKnife} />
-        <WeaponByHeavy type={"Heavy"} weapon={weaponsWithoutKnife} />
+        <WeaponBySidearms
+          type={"Sidearms"}
+          weapon={filteredWeaponsByTypeAndPrice}
+        />
+        <WeaponBySmgs type={"SMGs"} weapon={filteredWeaponsByTypeAndPrice} />
+        <WeaponByShotguns
+          type={"Shotguns"}
+          weapon={filteredWeaponsByTypeAndPrice}
+        />
+        <WeaponByRifles
+          type={"Assault Rifles"}
+          weapon={filteredWeaponsByTypeAndPrice}
+        />
+        <WeaponBySniper
+          type={"Sniper Rifles"}
+          weapon={filteredWeaponsByTypeAndPrice}
+        />
+        <WeaponByHeavy
+          type={"Heavy Weapons"}
+          weapon={filteredWeaponsByTypeAndPrice}
+        />
       </WrappedInventoryRest>
     </Section>
   );
@@ -40,6 +67,9 @@ const Section = styled.section`
 `;
 
 const WrappedInventoryRest = styled.div`
+  max-width: 1800px;
+  width: 80%;
+  margin: 0 auto;
   display: grid;
   grid-template-areas:
     "SIDE SMGS RIFLES SNIPER"
