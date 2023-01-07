@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import useQuery from "./hooks/useQuery";
-import {
-  WeaponBySidearms,
-  WeaponBySniper,
-  WeaponByHeavy,
-  WeaponByRifles,
-  WeaponBySmgs,
-  WeaponByShotguns,
-} from "./WeaponsType";
+// import {
+//   WeaponBySidearms,
+//   WeaponBySniper,
+//   WeaponByHeavy,
+//   WeaponByRifles,
+//   WeaponBySmgs,
+//   WeaponByShotguns,
+// } from "./WeaponsType";
+import { WeaponsByCategory } from "./WeaponsType";
 
-export const Weapons = ({ search }) => {
+export const Weapons = () => {
   const { weaponsQuery } = useQuery();
 
   if (weaponsQuery.isLoading) return <p>Loading</p>;
@@ -20,43 +21,23 @@ export const Weapons = ({ search }) => {
 
   const weaponsWithoutKnife = weaponsArray.slice(0, weaponsArray.length - 1);
 
-  const filteredWeaponsByTypeAndPrice = (type) => {
-    const categoryWeapons = weaponsWithoutKnife.filter(
-      (weapon) => weapon.shopData.categoryText === type
-    );
+  const categories = new Set(
+    weaponsWithoutKnife.map((weapon) => weapon.shopData.categoryText)
+  );
 
-    const sortWeaponsByPrice = categoryWeapons.sort(
-      (a, b) => a.shopData.cost - b.shopData.cost
+  const categoryComponents = Array.from(categories).map((category) => {
+    return (
+      <WeaponsByCategory
+        type={category}
+        weapon={weaponsWithoutKnife}
+        category={category}
+      />
     );
-
-    return [sortWeaponsByPrice];
-  };
+  });
 
   return (
     <Section>
-      <WrappedInventoryRest>
-        <WeaponBySidearms
-          type={"Sidearms"}
-          weapon={filteredWeaponsByTypeAndPrice}
-        />
-        <WeaponBySmgs type={"SMGs"} weapon={filteredWeaponsByTypeAndPrice} />
-        <WeaponByShotguns
-          type={"Shotguns"}
-          weapon={filteredWeaponsByTypeAndPrice}
-        />
-        <WeaponByRifles
-          type={"Assault Rifles"}
-          weapon={filteredWeaponsByTypeAndPrice}
-        />
-        <WeaponBySniper
-          type={"Sniper Rifles"}
-          weapon={filteredWeaponsByTypeAndPrice}
-        />
-        <WeaponByHeavy
-          type={"Heavy Weapons"}
-          weapon={filteredWeaponsByTypeAndPrice}
-        />
-      </WrappedInventoryRest>
+      <WrappedInventoryRest>{categoryComponents}</WrappedInventoryRest>
     </Section>
   );
 };
@@ -78,22 +59,22 @@ const WrappedInventoryRest = styled.div`
 
   div {
     &:nth-child(1) {
-      grid-area: SIDE;
+      grid-area: HEAVY;
     }
     &:nth-child(2) {
-      grid-area: SMGS;
+      grid-area: RIFLES;
     }
     &:nth-child(3) {
       grid-area: SHOTGUNS;
     }
     &:nth-child(4) {
-      grid-area: RIFLES;
+      grid-area: SIDE;
     }
     &:nth-child(5) {
       grid-area: SNIPER;
     }
     &:nth-child(6) {
-      grid-area: HEAVY;
+      grid-area: SMGS;
     }
   }
 `;

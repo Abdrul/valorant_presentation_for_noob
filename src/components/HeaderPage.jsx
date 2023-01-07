@@ -57,7 +57,7 @@ export const HeaderPage = () => {
             <Maps search={search} />
           </>
         )}
-        {displayCategories === "Weapon" && <Weapons search={search} />}
+        {displayCategories === "Weapon" && <Weapons />}
       </Section>
     </>
   );
