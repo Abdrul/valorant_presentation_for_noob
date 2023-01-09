@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { HeaderPage } from "./components/HeaderPage";
 import { Map } from "./components/Map";
-import { Weapon } from "./components/Weapon";
 import Agent from "./components/Agent";
 import { Route, Routes } from "react-router-dom";
 
@@ -13,7 +12,6 @@ function App() {
         <Route path="/" element={<HeaderPage />} />
         <Route path="/:id" element={<Agent />} />
         <Route path="/maps/:id" element={<Map />} />
-        <Route path="/weapons/:id" element={<Weapon />} />
       </Routes>
     </div>
   );

@@ -5,23 +5,14 @@ import { useLocation } from "react-router-dom";
 export const Map = () => {
   const { state } = useLocation();
   const item = state || [];
-
-  const pointStyle = {
-    position: "absolute",
-    left: 753,
-    top: 522,
-    width: 10,
-    height: 10,
-    backgroundColor: "red",
-    borderRadius: "50%",
-  };
+  console.log(item);
 
   return item ? (
     <Section>
       <WrappedMap>
         <h1>{item.displayName}</h1>
         <Img src={item.displayIcon} alt="map" />
-        <div style={pointStyle} onClick={() => console.log("hello")}></div>
+        <div onClick={() => console.log("hello")}></div>
       </WrappedMap>
       <h2>Call Position :</h2>
       <WrappedRegionName>

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const WeaponsByCategory = ({ type, weapon, category }) => {
   const filterWeaponsByCategory = weapon.filter(
@@ -15,11 +14,9 @@ export const WeaponsByCategory = ({ type, weapon, category }) => {
       {sortWeaponsByPrice.map((weapon) => {
         return (
           <div key={weapon.uuid}>
-            <Link to={`/weapons/${weapon.uuid}`} state={weapon}>
-              <img src={weapon.shopData.newImage} alt="" />
-              <p>{weapon.shopData.cost}</p>
-              <p>{weapon.displayName}</p>
-            </Link>
+            <img src={weapon.shopData.newImage} alt="" />
+            <p>{weapon.shopData.cost}</p>
+            <p>{weapon.displayName}</p>
           </div>
         );
       })}
@@ -50,11 +47,9 @@ const WrapperWeapons = styled.div`
       color: var(--headline);
       cursor: pointer;
 
-      a {
+      p {
         text-transform: uppercase;
         font-weight: 600;
-        text-decoration: none;
-        color: inherit;
       }
 
       img {
@@ -95,11 +90,9 @@ const WrapperWeapons = styled.div`
     margin-top: 5px;
     cursor: pointer;
 
-    a {
+    p {
       text-transform: uppercase;
       font-weight: 600;
-      text-decoration: none;
-      color: inherit;
     }
 
     img {
