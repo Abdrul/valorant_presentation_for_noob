@@ -11,14 +11,6 @@ export const Weapon = () => {
     <div>
       <h1>{item.displayName}</h1>
       <img src={item.displayIcon} alt="" />
-      {item.skins.map((skin) => {
-        return (
-          <div key={skin.uuid}>
-            <p>{skin.displayName}</p>
-            <img src={skin.displayIcon} alt="" />
-          </div>
-        );
-      })}
     </div>
   ) : (
     "Erreur"

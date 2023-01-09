@@ -1,14 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import useQuery from "./hooks/useQuery";
-// import {
-//   WeaponBySidearms,
-//   WeaponBySniper,
-//   WeaponByHeavy,
-//   WeaponByRifles,
-//   WeaponBySmgs,
-//   WeaponByShotguns,
-// } from "./WeaponsType";
 import { WeaponsByCategory } from "./WeaponsType";
 
 export const Weapons = () => {
@@ -76,5 +68,10 @@ const WrappedInventoryRest = styled.div`
     &:nth-child(6) {
       grid-area: SMGS;
     }
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
