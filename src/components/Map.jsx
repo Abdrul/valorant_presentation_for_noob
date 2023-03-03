@@ -14,6 +14,7 @@ export const Map = () => {
     const paths = document.querySelectorAll("path");
     const ids = Array.from(paths).map((path) => path);
     setArrOfPath(ids);
+
     const rect = document.querySelector("rect");
     setRect(rect);
   }, []);
